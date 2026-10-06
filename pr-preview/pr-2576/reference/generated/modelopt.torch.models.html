@@ -2,7 +2,7 @@
 <html lang="en" data-accent-color="green" data-content_root="../../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>models - Model Optimizer 0.0.1.dev1+ga9f421c64</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="nas" href="modelopt.torch.nas.html" /><link rel="prev" title="gemm" href="modelopt.torch.kernels.sparsity.gemm.html" /><script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>models - Model Optimizer 0.0.1.dev1+gd6c7ae80e</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="nas" href="modelopt.torch.nas.html" /><link rel="prev" title="gemm" href="modelopt.torch.kernels.sparsity.gemm.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"auto");
   </script><link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=e1a1ceaf" />
@@ -640,7 +640,7 @@ right now depends on the installed transformers and is read off the module.</p>
 <dt class="sig sig-object py" id="modelopt.torch.models.MoESpec.expert_linear_names">
 <span class="sig-name descname"><span class="pre">expert_linear_names</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#modelopt.torch.models.MoESpec.expert_linear_names" title="Link to this definition">#</a></dt>
 <dd><p>Expert linear projection names, e.g. <code class="docutils literal notranslate"><span class="pre">(&quot;gate_proj&quot;,</span> <span class="pre">&quot;down_proj&quot;,</span> <span class="pre">&quot;up_proj&quot;)</span></code>.
-For layouts modelopt rewrites (e.g. quantized DBRX), these are the names on the
+For layouts modelopt rewrites into per-expert modules, these are the names on the
 rewritten module.</p>
 </dd></dl>
 
@@ -681,7 +681,7 @@ wrong, not merely generic.</p>
 <dd><p>The (gate, up) pair among <code class="docutils literal notranslate"><span class="pre">expert_linear_names</span></code> that serving engines fuse
 into a single <code class="docutils literal notranslate"><span class="pre">gate_up_proj</span></code>, e.g. <code class="docutils literal notranslate"><span class="pre">(&quot;gate_proj&quot;,</span> <span class="pre">&quot;up_proj&quot;)</span></code> or
 <code class="docutils literal notranslate"><span class="pre">(&quot;w1&quot;,</span> <span class="pre">&quot;w3&quot;)</span></code>. <code class="docutils literal notranslate"><span class="pre">None</span></code> for non-gated experts (NemotronH) and already-fused
-layouts (GptOss, DBRX).</p>
+layouts (GptOss).</p>
 </dd></dl>
 
 <dl class="py property">
